@@ -1,0 +1,149 @@
+/* ------------- TAGS ------------- */
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+input {
+  width: 300px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  font-size: 22px;
+}
+
+input {
+  padding-left: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none !important;
+  color: black;
+}
+
+img {
+  height: 30%;
+}
+
+/* ------------- CLASSES: Search Section ------------- */
+
+.App {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.searchSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #153c77;
+  color: white;
+}
+
+.latestDealsIntro {
+  color: #0c2244;
+  text-decoration: underline;
+}
+
+.introText {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+
+.introText2 {
+  margin: 0;
+  margin-top: 10px;
+}
+
+.searchButton {
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: #0c2244;
+}
+
+/* ------------- CLASSES: Deals Section ------------- */
+
+.dealsSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.game {
+  width: 80%;
+  height: 300px;
+  border: none;
+  border-radius: 15px;
+  background-color: #2259ac;
+  color: white;
+  margin: 20px;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.cheapestDealText {
+  margin: 0px;
+  margin-top: 20px;
+}
+
+/* ------------- CLASSES: Sales Section ------------- */
+
+.salesSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.salesGame {
+  width: 80%;
+  height: 400px;
+  border: none;
+  border-radius: 15px;
+  background-color: #153c77;
+  color: white;
+  margin: 20px;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.saleText {
+  font-size: 18px;
+}
+
+.gameLink {
+  width: 170px;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+.gameLink:hover {
+  background-color: lightblue;
+}
+
+
+
