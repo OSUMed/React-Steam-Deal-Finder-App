@@ -86,6 +86,10 @@ img {
   flex-direction: row;
 }
 
+.dealsName {
+  font-size: 20px;
+  font-weight: bolder;
+}
 .game {
   width: 80%;
   height: 300px;
@@ -113,9 +117,14 @@ img {
   flex-direction: row;
 }
 
+.salesName {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
 .salesGame {
   width: 80%;
-  height: 400px;
+  height: 350px;
   border: none;
   border-radius: 15px;
   background-color: #153c77;
@@ -125,12 +134,21 @@ img {
   padding: 5px;
 }
 
+.salesSavedText {
+  font-size: 25px;
+}
+
 .saleText {
-  font-size: 18px;
+  font-size: 15px;
+}
+
+.imgSize {
+  border-radius: 97%;
+  width: 150px;
 }
 
 .gameLink {
-  width: 170px;
+  width: 140px;
   height: 30px;
   border: none;
   border-radius: 15px;
@@ -144,6 +162,3 @@ img {
 .gameLink:hover {
   background-color: lightblue;
 }
-
-
-
