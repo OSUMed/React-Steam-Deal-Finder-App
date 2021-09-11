@@ -12,6 +12,10 @@ function Cart() {
     toggleCheckout,
     totalprice,
     setTotalPrice,
+    setcartTotalItems,
+    cartTotalItems,
+    setCart,
+    emptyCart,
   } = useContext(PageContext);
 
   //   const handleIncrement = (quantity) => {
@@ -31,7 +35,8 @@ function Cart() {
   const final_price = () => {
     let total = 0;
     let mycart = [...cart];
-    console.log("this is my cart: ", mycart[1]);
+    let updateCount = mycart.length == 0 ? " " : mycart.length;
+    setcartTotalItems(updateCount);
 
     for (let i = 0; i < mycart.length; i++) {
       total += parseFloat(mycart[i].cartprice);
@@ -44,9 +49,16 @@ function Cart() {
     // console.log("This is the total price: ", 10 * quantity, price, total);
     // return total;
   };
+
   return (
     <div>
-      <Table striped bordered hover >
+      <br />
+      <Button variant="primary" onClick={(e) => emptyCart(e)}>
+        Empty Cart
+      </Button>
+      <br />
+      <br />
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>My Cart</th>
@@ -92,9 +104,12 @@ function Cart() {
       </Table>
       <br />
       <div className="totalprice">
-        <h3 style={{ marginBottom:"20px" }}>Total Price: $ {final_price()}</h3>
+        <h3 style={{ marginBottom: "20px" }}>Total Price: $ {final_price()}</h3>
         <Button variant="primary" onClick={(e) => toggleCheckout(e)}>
           Checkout
+          <span className="badge badge-light" style={{ marginLeft: 5 }}>
+            {cartTotalItems > 0 ? cartTotalItems + " " + "items" : ""}
+          </span>
         </Button>
       </div>
       {checkout && <Checkout />}

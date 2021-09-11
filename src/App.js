@@ -17,9 +17,12 @@ function App() {
   const [test, testGroup] = useState("Hello");
   const [favorites, setFavorites] = useState([]);
   const [titleId, settitleId] = useState(0);
+  const [cartId, setcartId] = useState(0);
+
   const [cart, setCart] = useState([]);
   const [checkout, setCheckout] = useState(false);
   const [totalprice, setTotalPrice] = useState(0);
+  const [cartTotalItems, setcartTotalItems] = useState(0);
 
   const searchGame = () => {
     fetch(`https://www.cheapshark.com/api/1.0/games?title=${gameTitle}&limit=5`)
@@ -47,7 +50,6 @@ function App() {
     }
     for (let i = 0; i < checkfavorites.length; i++) {
       if (gameTitle == checkfavorites[i].title) {
-        
         return console.log(
           "we found a duplicate favorite add: ",
           checkfavorites[i].title,
@@ -76,10 +78,11 @@ function App() {
     stock,
     fullgameLink1
   ) => {
+    setcartId(cartId + 1);
     let cartItems = [...cart];
     let newStock = stock + 1;
     cartItems.push({
-      id: gameId,
+      id: cartId,
       title: gameTitle,
       img: gameThumb,
       cartprice: cheapestPrice,
@@ -90,6 +93,13 @@ function App() {
     setCart(cartItems);
   };
 
+  const emptyCart = (e) => {
+    let removeItems = [...cart]
+    while(removeItems.length > 0) {
+      removeItems.pop();
+  }
+    setCart(removeItems)
+  }
   const onFavDelete = (selected) => {
     let filteredFavorites = [...favorites];
     filteredFavorites = favorites.filter(
@@ -136,6 +146,11 @@ function App() {
         toggleCheckout,
         totalprice,
         setTotalPrice,
+        cartTotalItems,
+        setcartTotalItems,
+        cartId,
+        setcartId,
+        emptyCart,
       }}
     >
       <div>
