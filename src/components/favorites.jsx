@@ -3,7 +3,6 @@ import { PageContext } from "../helpers/Context";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-
 function Favorites() {
   const { test, favorites, onFavDelete, addToCart, cart, setCheckout } =
     useContext(PageContext);
@@ -25,9 +24,11 @@ function Favorites() {
                 <img src={val.img} />
               </td>
               <td>
-                <button
+                <Button
+                  variant="primary"
                   onClick={() =>
                     addToCart(
+                      val.id,
                       val.title,
                       val.img,
                       val.cprice,
@@ -37,10 +38,12 @@ function Favorites() {
                   }
                 >
                   Add To Cart
-                </button>
+                </Button>
               </td>
               <td>
-                <Button variant="danger" onClick={() => onFavDelete(val.id)}>Delete</Button>
+                <Button variant="danger" onClick={() => onFavDelete(val.id)}>
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}

@@ -16,7 +16,7 @@ const Sales = () => {
     setFavorites,
     appendFavorites,
   } = useContext(PageContext);
-  let salessectionLike = false;
+
 
   return (
     <div>

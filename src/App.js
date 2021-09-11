@@ -19,6 +19,7 @@ function App() {
   const [titleId, settitleId] = useState(0);
   const [cart, setCart] = useState([]);
   const [checkout, setCheckout] = useState(false);
+  const [totalprice, setTotalPrice] = useState(0);
 
   const searchGame = () => {
     fetch(`https://www.cheapshark.com/api/1.0/games?title=${gameTitle}&limit=5`)
@@ -30,6 +31,30 @@ function App() {
   };
 
   const appendFavorites = (gameTitle, gameThumb, cheapestPrice, gameLink) => {
+    let checkfavorites = [...favorites];
+    console.log("check favorites: ", checkfavorites);
+    if (checkfavorites.length == 0) {
+      settitleId(titleId + 1);
+      checkfavorites.push({
+        title: gameTitle,
+        id: titleId,
+        img: gameThumb,
+        cprice: cheapestPrice,
+        stock: 0,
+        fullgameLink: gameLink,
+      });
+      return setFavorites(checkfavorites);
+    }
+    for (let i = 0; i < checkfavorites.length; i++) {
+      if (gameTitle == checkfavorites[i].title) {
+        
+        return console.log(
+          "we found a duplicate favorite add: ",
+          checkfavorites[i].title,
+          gameTitle
+        );
+      }
+    }
     settitleId(titleId + 1);
     let currentFavorites = [...favorites];
     currentFavorites.push({
@@ -40,11 +65,11 @@ function App() {
       stock: 0,
       fullgameLink: gameLink,
     });
-    console.log("current favorites: ", favorites);
     setFavorites(currentFavorites);
   };
 
   const addToCart = (
+    gameId,
     gameTitle,
     gameThumb,
     cheapestPrice,
@@ -54,6 +79,7 @@ function App() {
     let cartItems = [...cart];
     let newStock = stock + 1;
     cartItems.push({
+      id: gameId,
       title: gameTitle,
       img: gameThumb,
       cartprice: cheapestPrice,
@@ -75,7 +101,7 @@ function App() {
 
   const onCartDelete = (selected) => {
     let filteredFavorites = [...cart];
-    filteredFavorites = cart.filter((unselected) => unselected.title != selected);
+    filteredFavorites = cart.filter((unselected) => unselected.id != selected);
 
     setCart(filteredFavorites);
   };
@@ -108,6 +134,8 @@ function App() {
         checkout,
         setCheckout,
         toggleCheckout,
+        totalprice,
+        setTotalPrice,
       }}
     >
       <div>

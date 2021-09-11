@@ -162,3 +162,9 @@ img {
 .gameLink:hover {
   background-color: lightblue;
 }
+
+.totalprice {
+  text-align: right;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}

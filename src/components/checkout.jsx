@@ -4,11 +4,20 @@ import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 function Checkout() {
-  const { test, cart, onCartDelete, setCheckout, checkout } =
-    useContext(PageContext);
+  const {
+    test,
+    cart,
+    onCartDelete,
+    setCheckout,
+    checkout,
+    totalprice,
+    setTotalPrice,
+  } = useContext(PageContext);
+
+
   return (
     <div>
-        <br />
+      <br />
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -34,10 +43,7 @@ function Checkout() {
                 </a>
               </td>
               <td>
-                <Button
-                  variant="danger"
-                  onClick={() => onCartDelete(val.title)}
-                >
+                <Button variant="danger" onClick={() => onCartDelete(val.id)}>
                   Delete
                 </Button>
               </td>
@@ -45,6 +51,8 @@ function Checkout() {
           ))}
         </tbody>
       </Table>
+
+      <h3 className="totalprice">Total Price: $ {totalprice} </h3>
     </div>
   );
 }
