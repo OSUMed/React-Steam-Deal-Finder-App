@@ -16,6 +16,11 @@ function NavBar() {
           </NavLink>
         </li>
         <li className="nav-item">
+          <NavLink className="nav-item nav-link" to="/cart">
+            Cart
+          </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-item nav-link" to="/login">
             Login
           </NavLink>

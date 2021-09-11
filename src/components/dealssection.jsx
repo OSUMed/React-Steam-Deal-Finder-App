@@ -53,7 +53,7 @@ const Deals = () => {
               <br></br>
               <button
                 className="gameLink"
-                onClick={() => appendFavorites(game.external, game.thumb)}
+                onClick={() => appendFavorites(game.external, game.thumb, game.cheapest, `https://www.cheapshark.com/redirect?dealID=${game.cheapestDealID}`)}
               >
                 Favorite this
               </button>

@@ -16,6 +16,7 @@ const Sales = () => {
     setFavorites,
     appendFavorites,
   } = useContext(PageContext);
+  let salessectionLike = false;
 
   return (
     <div>
@@ -49,7 +50,9 @@ const Sales = () => {
                     <br />
                     <button
                       className="gameLink"
-                      onClick={() => appendFavorites(game.title, game.thumb)}
+                      onClick={() =>
+                        appendFavorites(game.title, game.thumb, game.salePrice, `https://store.steampowered.com/app/${game.steamAppID}`)
+                      }
                     >
                       Favorite this
                     </button>
