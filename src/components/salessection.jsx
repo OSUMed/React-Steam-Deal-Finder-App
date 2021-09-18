@@ -21,6 +21,7 @@ const Sales = () => {
     setFavorites,
     currentPage,
     appendFavorites,
+    changePage,
   } = useContext(PageContext);
 
   useEffect(() => {
@@ -29,10 +30,49 @@ const Sales = () => {
     setpaginatedPage(newpaginatedPage);
   }, [currentPage]);
 
+  // useEffect(() => {
+  //   onKeyDown={(event) => {
+  //     if (event.keyCode == 39) {
+  //       changePage(currentPage + 1);
+  //     } else if (event.keyCode == 37) {
+  //       changePage(currentPage - 1);
+  //     } else {
+  //       changePage(currentPage);
+  //     }
+  //   }}
+  // })
+
+  useEffect(() => {
+    function rightleftNavigation(event) {
+      if (event.keyCode == 39) {
+        changePage(currentPage + 1);
+      } else if (event.keyCode == 37) {
+        changePage(currentPage - 1);
+      } else {
+        changePage(currentPage);
+      }
+    }
+
+    document.addEventListener("keyup", rightleftNavigation);
+    return () => {
+      document.removeEventListener("keyup", rightleftNavigation);
+    };
+  });
+
+  const onNote = () => {
+    let elem = document.getElementById("mynote");
+    elem.style.display = "block";
+
+    console.log("is it none: ", elem.style);
+  };
+
   return (
-    <div>
+    <div id="salesDiv">
       <Link to="/">
-        <button className="latestDealsIntro"> Latest Deals </button>
+        <button className="latestDealsIntro" onClick={() => onNote()}>
+          {" "}
+          Latest Deals{" "}
+        </button>
       </Link>
       <div className="salesSection">
         {paginatedPage.map((game, key) => {
@@ -86,9 +126,23 @@ const Sales = () => {
           );
         })}
       </div>
+      <span id="mynote">
+        Note: right and left arrows can be used to scroll through pages
+      </span>
+
       <Pagination />
     </div>
   );
 };
 
 export default Sales;
+
+// onKeyDown={(event) => {
+//   if (event.keyCode == 39) {
+//     changePage(currentPage + 1);
+//   } else if (event.keyCode == 37) {
+//     changePage(currentPage - 1);
+//   } else {
+//     changePage(currentPage);
+//   }
+// }}
