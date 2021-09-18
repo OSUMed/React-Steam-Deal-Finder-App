@@ -39,7 +39,7 @@ function App() {
   // };
 
   const changePage = (page) => {
-    setcurrentPage(page);
+    return page > pages || page === 0 ? null : setcurrentPage(page);
   };
 
   const searchGame = () => {
@@ -117,7 +117,7 @@ function App() {
       removeItems.pop();
     }
     setCart(removeItems);
-    setCheckout(false)
+    setCheckout(false);
   };
   const onFavDelete = (selected) => {
     let filteredFavorites = [...favorites];
