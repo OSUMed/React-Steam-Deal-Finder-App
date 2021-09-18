@@ -7,7 +7,6 @@ import Home from "./components/home";
 import Cart from "./components/mycart";
 import { PageContext } from "./helpers/Context";
 import React, { useState, useEffect, useContext, Component } from "react";
-import Toast from "react-bootstrap/Toast";
 import "./App.css";
 
 function App() {
@@ -23,6 +22,25 @@ function App() {
   const [checkout, setCheckout] = useState(false);
   const [totalprice, setTotalPrice] = useState(0);
   const [cartTotalItems, setcartTotalItems] = useState(0);
+  const [perPage, setperPage] = useState(5);
+  const [pages, setPages] = useState(1);
+  const [currentPage, setcurrentPage] = useState(1);
+  // const [paginatedPage, setpaginatedPage] = useState([]);
+
+  const activePage = (page) => {
+    return page === currentPage ? "page-item active" : "page-item";
+  };
+
+  // const paginate = () => {
+  //   let startIndex = (currentPage - 1) * 5;
+  //   let newpaginatedPage = onSaleGames.slice(startIndex, startIndex + 5);
+  //   setpaginatedPage(newpaginatedPage);
+  //   forceUpdate();
+  // };
+
+  const changePage = (page) => {
+    setcurrentPage(page);
+  };
 
   const searchGame = () => {
     fetch(`https://www.cheapshark.com/api/1.0/games?title=${gameTitle}&limit=5`)
@@ -94,12 +112,12 @@ function App() {
   };
 
   const emptyCart = (e) => {
-    let removeItems = [...cart]
-    while(removeItems.length > 0) {
+    let removeItems = [...cart];
+    while (removeItems.length > 0) {
       removeItems.pop();
-  }
-    setCart(removeItems)
-  }
+    }
+    setCart(removeItems);
+  };
   const onFavDelete = (selected) => {
     let filteredFavorites = [...favorites];
     filteredFavorites = favorites.filter(
@@ -151,6 +169,12 @@ function App() {
         cartId,
         setcartId,
         emptyCart,
+        setPages,
+        pages,
+        changePage,
+        currentPage,
+        setcurrentPage,
+        activePage,
       }}
     >
       <div>

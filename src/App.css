@@ -50,8 +50,25 @@ img {
 }
 
 .latestDealsIntro {
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border-color: #0c2244;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  font-size: 24px;
   color: #0c2244;
-  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.latestDealsIntro1 {
+  color: #bbc1ca;
+  border: none;
+  border-radius: 180px;
+
+  margin-bottom: 30px;
+  background-color: #153c77;
+  color: #0c2244;
 }
 
 .introText {
@@ -124,7 +141,7 @@ img {
 
 .salesGame {
   width: 80%;
-  height: 390px;
+  height: 490px;
   border: none;
   border-radius: 15px;
   background-color: #153c77;
@@ -167,4 +184,9 @@ img {
   text-align: right;
   margin-right: 30px;
   margin-bottom: 30px;
+}
+
+.pagination {
+  justify-content: center;
+  align-items: center;
 }

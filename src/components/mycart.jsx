@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { PageContext } from "../helpers/Context";
 import { Table } from "react-bootstrap";
 import Checkout from "./checkout";
-import { Button } from "react-bootstrap";
+import { Button, Badge } from "react-bootstrap";
 
 function Cart() {
   const {

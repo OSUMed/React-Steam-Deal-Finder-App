@@ -1,9 +1,13 @@
 import react from "react";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { PageContext } from "../helpers/Context";
 import { Button } from "react-bootstrap";
+import Pagination from "../helpers/pagination";
+import { Link } from "react-router-dom";
 
 const Sales = () => {
+  const [paginatedPage, setpaginatedPage] = useState([]);
+
   const {
     gameTitle,
     setGameTitle,
@@ -13,16 +17,25 @@ const Sales = () => {
     setonSaleGames,
     searchGame,
     favorites,
+    pages,
     setFavorites,
+    currentPage,
     appendFavorites,
   } = useContext(PageContext);
 
+  useEffect(() => {
+    let startIndex = (currentPage - 1) * 5;
+    let newpaginatedPage = onSaleGames.slice(startIndex, startIndex + 5);
+    setpaginatedPage(newpaginatedPage);
+  }, [currentPage]);
 
   return (
     <div>
-      <h1 className="latestDealsIntro"> Latest Deals </h1>
+      <Link to="/">
+        <button className="latestDealsIntro"> Latest Deals </button>
+      </Link>
       <div className="salesSection">
-        {onSaleGames.map((game, key) => {
+        {paginatedPage.map((game, key) => {
           return (
             <div key={key} className="salesGame">
               <span className="salesName">{game.title}</span>
@@ -51,7 +64,12 @@ const Sales = () => {
                     <button
                       className="gameLink"
                       onClick={() =>
-                        appendFavorites(game.title, game.thumb, game.salePrice, `https://store.steampowered.com/app/${game.steamAppID}`)
+                        appendFavorites(
+                          game.title,
+                          game.thumb,
+                          game.salePrice,
+                          `https://store.steampowered.com/app/${game.steamAppID}`
+                        )
                       }
                     >
                       Favorite this
@@ -68,6 +86,7 @@ const Sales = () => {
           );
         })}
       </div>
+      <Pagination />
     </div>
   );
 };
