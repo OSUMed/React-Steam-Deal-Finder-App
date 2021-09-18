@@ -117,6 +117,7 @@ function App() {
       removeItems.pop();
     }
     setCart(removeItems);
+    setCheckout(false)
   };
   const onFavDelete = (selected) => {
     let filteredFavorites = [...favorites];

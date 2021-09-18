@@ -16,6 +16,7 @@ function Cart() {
     cartTotalItems,
     setCart,
     emptyCart,
+    setCheckout,
   } = useContext(PageContext);
 
   //   const handleIncrement = (quantity) => {
@@ -112,7 +113,7 @@ function Cart() {
           </span>
         </Button>
       </div>
-      {checkout && <Checkout />}
+      {cart.length > 0 ? checkout && <Checkout /> : setCheckout(false)}
     </div>
   );
 }
