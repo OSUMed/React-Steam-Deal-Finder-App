@@ -8,6 +8,7 @@ function Search() {
     <div className="searchSection">
       <strong className="introText"> Steam Deal Finder</strong>
       <h2 className="introText2"> Search For A Game</h2>
+      
       <input
         type="text"
         placeholder="Starcraft..."

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Sales = () => {
   const [paginatedPage, setpaginatedPage] = useState([]);
+  const [showNote, setshowNote] = useState(0);
 
   const {
     gameTitle,
@@ -59,20 +60,23 @@ const Sales = () => {
     };
   });
 
-  const onNote = () => {
-    let elem = document.getElementById("mynote");
-    elem.style.display = "block";
+  // let elem = document.getElementById("mynote");
+  // elem.style.display = "block";
 
-    console.log("is it none: ", elem.style);
+  // console.log("is it none: ", elem.style);
+
+  useEffect(() => {
+    setTimeout(onNote, 3500);
+  }, []);
+
+  let onNote = () => {
+    return setshowNote(showNote + 1);
   };
 
   return (
     <div id="salesDiv">
       <Link to="/">
-        <button className="latestDealsIntro" onClick={() => onNote()}>
-          {" "}
-          Latest Deals{" "}
-        </button>
+        <button className="latestDealsIntro">Latest Deals</button>
       </Link>
       <div className="salesSection">
         {paginatedPage.map((game, key) => {
@@ -126,9 +130,12 @@ const Sales = () => {
           );
         })}
       </div>
-      <span id="mynote">
-        Note: right and left arrows can be used to scroll through pages
-      </span>
+
+      {showNote === 1 ? (
+        <span id="mynote">
+          Note: right and left arrows can be used to scroll through pages
+        </span>
+      ) : null}
 
       <Pagination />
     </div>
